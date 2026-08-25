@@ -48,8 +48,18 @@ class HomePage extends StatelessWidget{
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(onPressed: decrement,child:Text("Saiu")),
-              TextButton(onPressed: increment,child:Text("Entrou"))
+              TextButton(onPressed: decrement,child:
+                Text("Saiu",
+                  style:TextStyle(
+                  fontSize:16,
+                  color: Colors.black
+              ))),
+              TextButton(onPressed: increment,child:Text("Entrou",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black
+                  ),  
+              ))
             ],
           )
         ],
