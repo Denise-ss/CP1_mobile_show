@@ -11,9 +11,9 @@ O sistema permite:
 - Utilizar imagem de fundo e identidade visual personalizada
   
 # Integrantes:
-**Karen Lucinda Lira Cardoso**  
-RM: 566870
-**Denise Santos**  
+**Karen Lucinda Lira Cardoso** \
+RM: 566870 \
+**Denise Santos** \
 RM: 567559
 
 ## 🛠️ Tecnologias utilizadas
