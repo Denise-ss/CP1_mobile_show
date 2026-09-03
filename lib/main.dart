@@ -8,9 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-      ),
+      theme: ThemeData(fontFamily: 'monospace'),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -47,12 +45,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'assets/img/logo_bg.png',
-          height: 40,
-        ),
+        title: Image.asset('assets/img/logo_bg.png', height: 40),
 
-        // BOTÃO DE RESET
+        // Botão de reset
         actions: [
           IconButton(
             onPressed: () {
@@ -65,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
 
-        backgroundColor: const Color.fromARGB(255,34,34,34,),
+        backgroundColor: const Color.fromARGB(255, 1, 1, 1),
 
         centerTitle: true,
       ),
@@ -75,17 +70,33 @@ class _HomePageState extends State<HomePage> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                  'assets/img/creed_bg.jpg',
-                ),
+                image: AssetImage('assets/img/creed_bg.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-
           Positioned.fill(
-            child: Container(
-              color: Colors.black.withOpacity(0.5),
+            child: Container(color: Colors.black.withOpacity(0.5)),
+          ),
+
+          // Mini Footer
+          Positioned(
+            left: 16,
+            right: 16,
+            bottom: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "© 2026 CREED",
+                  style: TextStyle(fontSize: 10, color: Colors.white54),
+                ),
+
+                Text(
+                  "SHOW CONTROL",
+                  style: TextStyle(fontSize: 10, color: Colors.white54),
+                ),
+              ],
             ),
           ),
 
@@ -97,21 +108,32 @@ class _HomePageState extends State<HomePage> {
                   isFull
                       ? "Ambiente lotado!"
                       : isAlmostFull
-                          ? "Quase lotado!"
-                          : "Acesse o show",
+                      ? "Quase lotado!"
+                      : "Acesse o show",
                   style: const TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 35,
                     color: Colors.white,
                     fontWeight: FontWeight.w300,
-                    letterSpacing: -1,
+                    letterSpacing: -3,
                   ),
                 ),
+
+                if (isFull)
+                  Transform.translate(
+                    offset: const Offset(0, -6),
+                    child: const Text(
+                      "Aguarde a liberação de novas vagas.",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
 
                 Text(
                   contador.toString(),
                   style: const TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 100,
                     color: Colors.white,
                     letterSpacing: -2,
@@ -121,24 +143,22 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //SAIU
+                    //Saiu
                     TextButton(
                       onPressed: isEmpty ? null : decrement,
 
                       style: TextButton.styleFrom(
-                        backgroundColor:
-                            isEmpty
-                                ? Colors.transparent
-                                : Colors.white,
+                        backgroundColor: isEmpty
+                            ? Colors.transparent
+                            : Colors.white,
 
                         fixedSize: const Size(110, 42),
+
                         padding: EdgeInsets.zero,
+
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero,
-                          side: BorderSide(
-                            color: Colors.white,
-                            width: 1,
-                          ),
+                          side: BorderSide(color: Colors.white, width: 1),
                         ),
                       ),
 
@@ -147,36 +167,31 @@ class _HomePageState extends State<HomePage> {
                         maxLines: 1,
                         softWrap: false,
                         style: TextStyle(
-                          fontFamily: 'monospace',
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color:
-                              isEmpty
-                                  ? Colors.white54
-                                  : Colors.black,
+                          color: isEmpty ? Colors.white54 : Colors.black,
                         ),
                       ),
                     ),
 
                     const SizedBox(width: 16),
 
-                    //ENTROU
+                    //Entrou
                     TextButton(
                       onPressed: isFull ? null : increment,
+
                       style: TextButton.styleFrom(
-                        backgroundColor:
-                            isFull
-                                ? Colors.transparent
-                                : Colors.white,
+                        backgroundColor: isFull
+                            ? Colors.transparent
+                            : Colors.white,
 
                         fixedSize: const Size(110, 42),
+
                         padding: EdgeInsets.zero,
+
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero,
-                          side: BorderSide(
-                            color: Colors.white,
-                            width: 1,
-                          ),
+                          side: BorderSide(color: Colors.white, width: 1),
                         ),
                       ),
 
@@ -185,13 +200,9 @@ class _HomePageState extends State<HomePage> {
                         maxLines: 1,
                         softWrap: false,
                         style: TextStyle(
-                          fontFamily: 'monospace',
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          color:
-                              isFull
-                                  ? Colors.white54
-                                  : Colors.black,
+                          color: isFull ? Colors.white54 : Colors.black,
                         ),
                       ),
                     ),
