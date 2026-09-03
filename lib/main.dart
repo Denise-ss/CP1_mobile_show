@@ -26,33 +26,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int contador = 0;
-  
+
   void decrement() {
-    if (contador > 0) {
-      setState(() {
-        contador--;
-      });
-    }
-  }
-  
-  void increment() {
-    if (contador < 50) {
-      setState(() {
-        contador++;
-      });
-    }
+    setState(() {
+      contador--;
+    });
   }
 
-  // MENSAGENS DE LOTAÇÃO
-  String mensagemLotacao() {
-    if (contador == 50) {
-      return "Ambiente lotado!";
-    } else if (contador >= 40) {
-      return "Quase lotado!";
-    } else {
-      return "Acesse o show";
-    }
+  void increment() {
+    setState(() {
+      contador++;
+    });
   }
+
+  bool get isEmpty => contador <= 0;
+  bool get isFull => contador == 50;
+  bool get isAlmostFull => contador >= 40 && contador < 50;
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +66,12 @@ class _HomePageState extends State<HomePage> {
         ],
 
         backgroundColor: const Color.fromARGB(255,34,34,34,),
+
         centerTitle: true,
       ),
 
       body: Stack(
-        children: [          
+        children: [
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -92,20 +82,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          
+
           Positioned.fill(
             child: Container(
               color: Colors.black.withOpacity(0.5),
             ),
           ),
-       
+
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // MENSAGEM
                 Text(
-                  mensagemLotacao(),
+                  isFull
+                      ? "Ambiente lotado!"
+                      : isAlmostFull
+                          ? "Quase lotado!"
+                          : "Acesse o show",
                   style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 35,
@@ -114,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     letterSpacing: -1,
                   ),
                 ),
-                
+
                 Text(
                   contador.toString(),
                   style: const TextStyle(
@@ -124,31 +117,29 @@ class _HomePageState extends State<HomePage> {
                     letterSpacing: -2,
                   ),
                 ),
-                
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // BOTÃO SAIU
-                    OutlinedButton(
-                      onPressed: contador == 0 ? null : decrement,
+                    //SAIU
+                    TextButton(
+                      onPressed: isEmpty ? null : decrement,
 
-                      style: OutlinedButton.styleFrom(
+                      style: TextButton.styleFrom(
                         backgroundColor:
-                            contador == 0
+                            isEmpty
                                 ? Colors.transparent
                                 : Colors.white,
 
-                        side: const BorderSide(
-                          color: Colors.white,
-                          width: 1,
-                        ),
-
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                        ),
-
                         fixedSize: const Size(110, 42),
                         padding: EdgeInsets.zero,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: 1,
+                          ),
+                        ),
                       ),
 
                       child: Text(
@@ -159,9 +150,8 @@ class _HomePageState extends State<HomePage> {
                           fontFamily: 'monospace',
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          letterSpacing: 0,
                           color:
-                              contador == 0
+                              isEmpty
                                   ? Colors.white54
                                   : Colors.black,
                         ),
@@ -170,27 +160,24 @@ class _HomePageState extends State<HomePage> {
 
                     const SizedBox(width: 16),
 
-                    // BOTÃO ENTROU
-                    OutlinedButton(
-                      onPressed: contador == 50 ? null : increment,
-
-                      style: OutlinedButton.styleFrom(
+                    //ENTROU
+                    TextButton(
+                      onPressed: isFull ? null : increment,
+                      style: TextButton.styleFrom(
                         backgroundColor:
-                            contador == 50
+                            isFull
                                 ? Colors.transparent
                                 : Colors.white,
 
-                        side: const BorderSide(
-                          color: Colors.white,
-                          width: 1,
-                        ),
-
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                        ),
-
                         fixedSize: const Size(110, 42),
                         padding: EdgeInsets.zero,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: 1,
+                          ),
+                        ),
                       ),
 
                       child: Text(
@@ -201,9 +188,8 @@ class _HomePageState extends State<HomePage> {
                           fontFamily: 'monospace',
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
-                          letterSpacing: 0,
                           color:
-                              contador == 50
+                              isFull
                                   ? Colors.white54
                                   : Colors.black,
                         ),
@@ -219,4 +205,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
- 
