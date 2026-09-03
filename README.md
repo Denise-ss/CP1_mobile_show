@@ -1,17 +1,36 @@
-# projeto_cont_fiap
+# Creed Show - Controle de Lotação
 
-A new Flutter project.
+Aplicativo desenvolvido em Flutter para controle de entrada e saída de pessoas em um show.
+O sistema permite:
+- Incrementar o número de pessoas no ambiente
+- Decrementar o número de pessoas
+- Limitar a capacidade máxima em 50 pessoas
+- Exibir mensagens de acordo com a lotação
+- Desabilitar visualmente os botões ao atingir os limites
+- Resetar a contagem
+- Utilizar imagem de fundo e identidade visual personalizada
+  
+# Integrantes:
+**Karen Lucinda Lira Cardoso**  
+RM: 566870
+**Denise Santos**  
+RM: 567559
 
-## Getting Started
+## 🛠️ Tecnologias utilizadas
+- Flutter
+- Dart
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Funcionalidades
+A mensagem exibida muda de acordo com a quantidade de pessoas:
+- 0 a 39 pessoas: *Acesse o show*
+- 40 a 49 pessoas: *Quase lotado!*
+- 50 pessoas: *Ambiente lotado!*
+  
+A capacidade máxima permitida é de 50 pessoas.
+## Como executar
+1. Clone o repositório.
+2. Abra o projeto no VS Code ou Android Studio.
+3. Execute:
+  flutter pub get
+  flutter run
