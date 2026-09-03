@@ -32,5 +32,5 @@ A capacidade máxima permitida é de 50 pessoas.
 1. Clone o repositório.
 2. Abra o projeto no VS Code ou Android Studio.
 3. Execute:
-  flutter pub get
-  flutter run
+- flutter pub get
+- flutter run
