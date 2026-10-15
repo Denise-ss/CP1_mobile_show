@@ -292,7 +292,7 @@ Assim, o aplicativo passou de um contador simples para um sistema de gerenciamen
 
 ## Vídeo de demonstração
 
-**Link do vídeo:** [INSERIR LINK AQUI]
+**Link do vídeo:** https://youtu.be/VfRHN7fmtHw?is=7WzuxuqdT-Pkvp8R
 
 O vídeo demonstra o funcionamento do aplicativo, incluindo cadastro de pessoas, controle da lotação, registro de saída, validações e as opções SAÍDA e EXCLUIR do Slidable.
 
