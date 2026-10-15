@@ -1,0 +1,14 @@
+
+class Pessoa {
+  String nome;
+  String identificacao;
+  DateTime dataEntrada;
+  DateTime? dataSaida;
+
+  Pessoa({
+    required this.nome,
+    required this.identificacao,
+    required this.dataEntrada,
+    this.dataSaida,
+  });
+}

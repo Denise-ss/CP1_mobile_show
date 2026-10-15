@@ -1,30 +1,38 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:projeto_cont_fiap/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets(
+    'CREED cadastra pessoa e atualiza a lotacao',
+    (tester) async {
+      await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      // Confirma que o contador inicia em zero
+      expect(find.text('0'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      // Preenche o nome da pessoa
+      await tester.enterText(
+        find.byType(TextField).at(0),
+        'Maria Silva',
+      );
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+      // Preenche a identificacao
+      await tester.enterText(
+        find.byType(TextField).at(1),
+        '123456',
+      );
+
+      // Registra a entrada
+      await tester.ensureVisible(find.text('ENTROU'));
+      await tester.tap(find.text('ENTROU'));
+      await tester.pump();
+
+      // Confirma o cadastro
+      expect(find.text('1'), findsOneWidget);
+      expect(find.text('Maria Silva'), findsOneWidget);
+      expect(find.text('ID: 123456'), findsOneWidget);
+    },
+  );
 }
